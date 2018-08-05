@@ -3,8 +3,36 @@
 var pacientes = document.querySelectorAll('.paciente');
 
 for(var i = 0; i < pacientes.length; i++) {
-  calculaImcDoPaciente(pacientes[i]);
+  const paciente = getPaciente(pacientes[i]);
+
+  var pesoValido = paciente.isPesoValido();
+  var alturaValida = paciente.isAlturaValida();
+  var imc = paciente.imc();
+
+  setImc(imc, pacientes[i]);
 }
+
+function getPaciente(trPaciente) {
+  var tdNome = trPaciente.querySelector('.info-nome');
+  var tdPeso = trPaciente.querySelector('.info-peso');
+  var tdAltura = trPaciente.querySelector('.info-altura');
+  var tdGordura = trPaciente.querySelector('.info-gordura');
+
+  var _nome = tdNome.textContent;
+  var _peso = tdPeso.textContent;
+  var _altura = tdAltura.textContent;
+  var _gordura = tdGordura.textContent;
+
+  return criaPaciente(_nome,_peso, _altura, gordura);
+}
+
+function setImc(imc, trPaciente) {
+  var tdImc = trPaciente.querySelector('.info-imc');
+  tdImc.textContent = imc.toFixed(2);
+}
+
+
+/* -------------------------- */
 
 function calculaImcDoPaciente(trPaciente) {
   var tdPeso = trPaciente.querySelector('.info-peso');
@@ -19,9 +47,6 @@ function calculaImcDoPaciente(trPaciente) {
   }
 }
 
-function calculaImc(peso, altura) {
-  return peso / ( altura * altura);
-}
 
 function isPesoEAlturaValidos(trPaciente) {
 
