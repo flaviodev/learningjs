@@ -1,5 +1,8 @@
 calcularImcPacientes();
 
+const PESO_INVALIDO = 'peso inválido!';
+const ALTURA_INVALIDA = 'altura inválida!';
+
 function calcularImcPacientes() {
   var pacientes = document.querySelectorAll('.paciente');
 
@@ -62,12 +65,12 @@ function setImc(imc, trPaciente) {
 
 function setPesoInvalido(peso, trPaciente) {
   var tdPeso = trPaciente.querySelector('.info-peso');
-  tdPeso.textContent = peso + ' (peso inválido)';
+  tdPeso.textContent = peso + ' ('+PESO_INVALIDO+')';
 }
 
 function setAlturaInvalida(altura, trPaciente) {
   var tdAltura = trPaciente.querySelector('.info-altura');
-  tdAltura.textContent = altura + ' (altura inválida)';
+  tdAltura.textContent = altura + ' ('+ALTURA_INVALIDA+')';
 }
 
 function setPacienteInvalido(trPaciente) {
