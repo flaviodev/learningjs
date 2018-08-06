@@ -1,21 +1,14 @@
-function criaPaciente(nome, peso, altura, gordura) {
-    var paciente = {};
-    paciente.nome = nome;
-    paciente.peso = Number(peso);
-    paciente.altura = Number(altura);
-    paciente.gordura = Number(gordura);
-
-    paciente.imc =  function () { 
-        return this.peso / ( this.altura * this.altura);
-    };
-
-    paciente.isPesoValido = function() {
-        return this.peso > 0 && this.peso < 200;
-    };
-
-    paciente.isAlturaValida = function() {
-        return this.altura  > 0.0 && this.altura < 3.0;
-    };
-
-    return paciente;
+class Paciente {
+    constructor(nome, peso, altura, gordura) {
+        this.nome = nome;
+        this.peso = peso;
+        this.altura = altura;
+        this.gordura = gordura;
+    }
 }
+
+const calculaImc = (peso, altura) => peso / ( altura * altura);
+
+const isPesoValido = (peso) => peso > 0 && peso < 200;
+
+const isAlturaValida = (altura) => altura  > 0.0 && altura < 3.0;

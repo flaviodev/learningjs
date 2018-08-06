@@ -1,14 +1,43 @@
-calcularImcPacientes();
+iniciarPaciente();
 
-const PESO_INVALIDO = 'peso inválido!';
-const ALTURA_INVALIDA = 'altura inválida!';
+function iniciarPaciente() {
+  var tabela = document.querySelector("#tabela-pacientes");
+  
+  var paulo = new Paciente("Paulo", 100, 2.0, 10);
+  var pauloTr = criaPacienteTr();
+  populaPacienteTr(paulo,pauloTr);
+  tabela.appendChild(pauloTr);
+
+  var joao = new Paciente("João", 80, 1.66, 40);
+  var joaoTr = criaPacienteTr();
+  populaPacienteTr(joao,joaoTr);
+  tabela.appendChild(joaoTr);
+
+  var erica = new Paciente("Erica", 54, 1.64, 14);
+  var ericaTr = criaPacienteTr();
+  populaPacienteTr(erica,ericaTr);
+  tabela.appendChild(ericaTr);
+
+  var douglas = new Paciente("Douglas", 85, 1.73, 24);
+  var douglasTr = criaPacienteTr();
+  populaPacienteTr(douglas,douglasTr);
+  tabela.appendChild(douglasTr);
+
+  var tatiana = new Paciente("Tatiana", 46, 1.55, 19);
+  var tatianaTr = criaPacienteTr();
+  populaPacienteTr(tatiana,tatianaTr);
+  tabela.appendChild(tatianaTr);
+
+}
+
+
+//calcularImcPacientes();
 
 function calcularImcPacientes() {
   var pacientes = document.querySelectorAll('.paciente');
 
   for(var i = 0; i < pacientes.length; i++) {
     var paciente = getPaciente(pacientes[i]);
-    paciente.nome = 'teste';
 
     populaPacienteTr(paciente, pacientes[i]);
   }
@@ -25,7 +54,7 @@ function getPaciente(trPaciente) {
   var _altura = tdAltura.textContent;
   var _gordura = tdGordura.textContent;
 
-  return criaPaciente(_nome,_peso, _altura, _gordura);
+  return new Paciente(_nome, _peso, _altura, _gordura);
 }
 
 function populaPacienteTr(paciente, trPaciente) {
@@ -39,8 +68,8 @@ function populaPacienteTr(paciente, trPaciente) {
   tdAltura.textContent = paciente.altura;
   tdGordura.textContent = paciente.gordura;
 
-  var pesoValido = paciente.isPesoValido();
-  var alturaValida = paciente.isAlturaValida();
+  var pesoValido = isPesoValido(paciente.peso);
+  var alturaValida = isAlturaValida(paciente.altura);
   
   if(!pesoValido) {
     setPesoInvalido(paciente.peso, trPaciente);
@@ -51,7 +80,7 @@ function populaPacienteTr(paciente, trPaciente) {
   }
 
   if(pesoValido && alturaValida) {
-    var imc = paciente.imc();
+    var imc = calculaImc(paciente.peso, paciente.altura);
     setImc(imc, trPaciente);
   } else {
     setPacienteInvalido(trPaciente);
@@ -65,12 +94,12 @@ function setImc(imc, trPaciente) {
 
 function setPesoInvalido(peso, trPaciente) {
   var tdPeso = trPaciente.querySelector('.info-peso');
-  tdPeso.textContent = peso + ' ('+PESO_INVALIDO+')';
+  tdPeso.textContent = peso + ' (peso inválido)';
 }
 
 function setAlturaInvalida(altura, trPaciente) {
   var tdAltura = trPaciente.querySelector('.info-altura');
-  tdAltura.textContent = altura + ' ('+ALTURA_INVALIDA+')';
+  tdAltura.textContent = altura + ' (altura inválida)';
 }
 
 function setPacienteInvalido(trPaciente) {
@@ -96,11 +125,30 @@ function criaPacienteTr() {
   var imcTd = document.createElement("td");
   imcTd.classList.add("info-imc");
 
+  var acoesTd = document.createElement("td");
+  acoesTd.classList.add("info-acoes");
+  
+  var botaoExcluir = document.createElement("button");
+  botaoExcluir.classList.add("botao");
+  botaoExcluir.classList.add("botao-remover");
+  botaoExcluir.textContent = "Remover";
+
+  botaoExcluir.addEventListener(
+    "click", (evento) => {
+      pacienteTr.classList.add("fadeout");
+      setTimeout(() => {
+         pacienteTr.parentNode.removeChild(pacienteTr);
+      }, 500);
+    });
+
+  acoesTd.appendChild(botaoExcluir);
+  
   pacienteTr.appendChild(nomeTd);
   pacienteTr.appendChild(pesoTd);
   pacienteTr.appendChild(alturaTd);
   pacienteTr.appendChild(gorduraTd);
   pacienteTr.appendChild(imcTd);
+  pacienteTr.appendChild(acoesTd);
 
   return pacienteTr;
 }

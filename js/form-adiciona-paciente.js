@@ -38,7 +38,7 @@ function extrairPacienteDoFormulario(form) {
   var altura = form.altura.value;
   var gordura = form.gordura.value;
 
-  return criaPaciente(nome, peso, altura, gordura);
+  return new Paciente(nome, Number(peso), Number(altura), Number(gordura));
 }
 
 
@@ -59,7 +59,7 @@ function isPossuiErros(paciente) {
 
   var inputPeso = document.querySelector("#peso");
   var msgErroPeso = document.querySelector("#msgErroPeso");
-  if(!paciente.isPesoValido()) {
+  if(!isPesoValido(paciente.peso)) {
     inputPeso.classList.add("campo-invalido");
     msgErroPeso.textContent = 'Peso Inválido!';
     possuiErro = true;
@@ -70,7 +70,7 @@ function isPossuiErros(paciente) {
 
   var inputAltura = document.querySelector("#altura");
   var msgErroAltura = document.querySelector("#msgErroAltura");
-  if(!paciente.isAlturaValida()) {
+  if(!isAlturaValida(paciente.altura)) {
     inputAltura.classList.add("campo-invalido");
     msgErroAltura.textContent = 'Altura Inválida!';
     possuiErro = true;
