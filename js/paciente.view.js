@@ -4,7 +4,10 @@ function calcularImcPacientes() {
   var pacientes = document.querySelectorAll('.paciente');
 
   for(var i = 0; i < pacientes.length; i++) {
-    populaPacienteTr(getPaciente(pacientes[i]), pacientes[i]);
+    var paciente = getPaciente(pacientes[i]);
+    paciente.nome = 'teste';
+
+    populaPacienteTr(paciente, pacientes[i]);
   }
 }
 
