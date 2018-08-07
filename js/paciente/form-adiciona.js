@@ -44,7 +44,7 @@ const isPossuiErros = (paciente) => {
   var msgErroNome = document.querySelector("#msgErroNome");
   if(paciente.nome.length == 0) {
     inputNome.classList.add("campo-invalido");
-    msgErroNome.textContent = 'Nome deve ser informado!';
+    msgErroNome.textContent = ' campo obrigatório!';
     possuiErro = true;
   } else {
     inputNome.classList.remove("campo-invalido");
@@ -55,7 +55,7 @@ const isPossuiErros = (paciente) => {
   var msgErroPeso = document.querySelector("#msgErroPeso");
   if(!isPesoValido(paciente.peso)) {
     inputPeso.classList.add("campo-invalido");
-    msgErroPeso.textContent = 'Peso Inválido!';
+    msgErroPeso.textContent = ' deve ser > 0 e < 200';
     possuiErro = true;
   } else {
     inputPeso.classList.remove("campo-invalido");
@@ -66,7 +66,7 @@ const isPossuiErros = (paciente) => {
   var msgErroAltura = document.querySelector("#msgErroAltura");
   if(!isAlturaValida(paciente.altura)) {
     inputAltura.classList.add("campo-invalido");
-    msgErroAltura.textContent = 'Altura Inválida!';
+    msgErroAltura.textContent = ' deve ser > 0 e < 3';
     possuiErro = true;
   } else {
     inputAltura.classList.remove("campo-invalido");
@@ -77,7 +77,7 @@ const isPossuiErros = (paciente) => {
   var msgErroGordura = document.querySelector("#msgErroGordura");
   if(paciente.gordura == 0) {
     inputGordura.classList.add("campo-invalido");
-    msgErroGordura.textContent = '%Gordura deve ser informado!';
+    msgErroGordura.textContent = ' campo obrigatório!';
     possuiErro = true;
   } else {
     inputGordura.classList.remove("campo-invalido");

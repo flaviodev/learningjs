@@ -33,30 +33,28 @@
 					<tbody id="tabela-pacientes">
 					</tbody>
 				</table>
+				<span id="erro-ajax" class="invisivel">Erro ao buscar os pacientes</span>
+				<button id="buscar-pacientes" class="botao bto-principal">Buscar Pacientes</button>
 			</section>
 
 			<section class="container">
 				<h2 id="titulo-form">Adicionar novo paciente</h2>
 				<form id="form-adiciona">
 					<div class="grupo">
-						<label for="nome">Nome:</label>
+						<label for="nome">Nome:* <span id="msgErroNome" class="mensagem-validacao"></span></label>
 						<input id="nome" name="nome" type="text" placeholder="digite o nome do seu paciente" class="campo">
-						<span id="msgErroNome" class="mensagem-validacao"></span>
 					</div>
 					<div class="grupo">
-						<label for="peso">Peso:</label>
+						<label for="peso">Peso:* <span id="msgErroPeso" class="mensagem-validacao"></span></label>
 						<input id="peso" name="peso" type="text" placeholder="digite o peso do seu paciente" class="campo campo-medio">
-						<span id="msgErroPeso" class="mensagem-validacao"></span>
 					</div>
 					<div class="grupo">
-						<label for="altura">Altura:</label>
+						<label for="altura">Altura:* <span id="msgErroAltura" class="mensagem-validacao"></span></label>
 						<input id="altura" name="altura" type="text" placeholder="digite a altura do seu paciente" class="campo campo-medio">
-						<span id="msgErroAltura" class="mensagem-validacao"></span>
 					</div>
 					<div class="grupo">
-						<label for="gordura">% de Gordura:</label>
+						<label for="gordura">% de Gordura:* <span id="msgErroGordura" class="mensagem-validacao"></span></label>
 						<input id="gordura" type="text" placeholder="digite a porcentagem de gordura do seu paciente" class="campo campo-medio">
-						<span id="msgErroGordura" class="mensagem-validacao"></span>
 					</div>
 			
 					<button id="adicionar-paciente" class="botao botao-principal">Adicionar</button>
@@ -69,5 +67,6 @@
 		<script src="js/paciente/form-adiciona.js"></script>
 		<script src="js/paciente/filtro-tabela.js"></script>
 		<script src="js/paciente/dados-iniciais.js"></script>
+		<script src="js/paciente/busca-api.js"></script>
 	</body>
 </html>
