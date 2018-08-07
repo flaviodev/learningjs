@@ -9,28 +9,23 @@ botaoAdicionar.addEventListener("click", function(event){
   if(isPossuiErros(paciente))
     return;
 
-  var pacienteTr = criaPacienteTr();
-
-  populaPacienteTr(paciente, pacienteTr);
-
   var tabela = document.querySelector("#tabela-pacientes");
 
-  tabela.appendChild(pacienteTr);
+  adicionaPaciente(paciente, tabela);
 
   limpaFormulario(form);
 });
 
-function limpaFormulario(form) {
+const limpaFormulario = (form) => {
   form.reset();
 
-  var inputAltura = document.querySelector("#altura");
-  inputAltura.classList.remove("campo-invalido");
-  
-  var inputPeso = document.querySelector("#peso");
-  inputPeso.classList.remove("campo-invalido");
+  document.querySelector("#nome").classList.remove("campo-invalido");
+  document.querySelector("#peso").classList.remove("campo-invalido");
+  document.querySelector("#altura").classList.remove("campo-invalido");
+  document.querySelector("#gordura").classList.remove("campo-invalido");
 }
 
-function extrairPacienteDoFormulario(form) {
+const extrairPacienteDoFormulario = (form) => {
   var form = document.querySelector("#form-adiciona");
 
   var nome = form.nome.value;
@@ -41,8 +36,7 @@ function extrairPacienteDoFormulario(form) {
   return new Paciente(nome, Number(peso), Number(altura), Number(gordura));
 }
 
-
-function isPossuiErros(paciente) {
+const isPossuiErros = (paciente) => {
 
   var possuiErro = false;
 
@@ -90,5 +84,5 @@ function isPossuiErros(paciente) {
     msgErroGordura.textContent = '';
   }
 
- return possuiErro;
+  return possuiErro;
 }

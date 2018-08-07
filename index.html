@@ -17,6 +17,8 @@
 		<main>
 			<section class="container">
 				<h2>Meus pacientes</h2>
+				<label for="filtrar-tabela">Filtre:</label>
+				<input type="text" name="filtro" id="filtrar-tabela" placeholder="Digite o nome do paciente">				
 				<table>
 					<thead>
 						<tr>
@@ -62,8 +64,10 @@
 			</section>
 
 		</main>
-		<script src="js/paciente.model.js"></script>
-		<script src="js/paciente.view.js"></script>
-		<script src="js/form-adiciona-paciente.js"></script>
+		<script src="js/paciente/paciente.js"></script>
+		<script src="js/paciente/tabela.js"></script>
+		<script src="js/paciente/form-adiciona.js"></script>
+		<script src="js/paciente/filtro-tabela.js"></script>
+		<script src="js/paciente/dados-iniciais.js"></script>
 	</body>
 </html>
