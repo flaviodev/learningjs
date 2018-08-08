@@ -16,21 +16,17 @@ const populaPacienteTr = (paciente, trPaciente) => {
     tdPeso.textContent = paciente.peso;
     tdAltura.textContent = paciente.altura;
     tdGordura.textContent = paciente.gordura;
-  
-    var pesoValido = isPesoValido(paciente.peso);
-    var alturaValida = isAlturaValida(paciente.altura);
     
-    if(!pesoValido) {
+    if(!paciente.pesoValido) {
       setPesoInvalido(paciente.peso, trPaciente);
     }
   
-    if(!alturaValida) {
+    if(!paciente.alturaValida) {
       setAlturaInvalida(paciente.altura, trPaciente);
     }
   
-    if(pesoValido && alturaValida) {
-      var imc = calculaImc(paciente.peso, paciente.altura);
-      setImc(imc, trPaciente);
+    if(paciente.pesoValido && paciente.alturaValida) {
+      setImc(paciente.imc, trPaciente);
     } else {
       setPacienteInvalido(trPaciente);
     }
