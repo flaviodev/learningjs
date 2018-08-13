@@ -1,28 +1,17 @@
 class Paciente {
     constructor(nome, peso, altura, gordura) {
-        this._nome = nome;
-        this._peso = peso;
-        this._altura = altura;
-        this._gordura = gordura;
-
-        Object.freeze(this);
+        this.nome = nome;
+        this.peso = peso;
+        this.altura = altura;
+        this.gordura = gordura;
     }
-
-    get nome() { return this._nome; }
- 
-    get peso() { return this._peso; }
- 
-    get altura() { return this._altura; }
- 
-    get gordura() { return this._gordura; }
-
-    get imc() { return this._peso / ( this._altura * this._altura); } 
-
-    get pesoValido() { return this._peso > 0 && this._peso < 200; }
-
-    get alturaValida() { return this._altura  > 0.0 && this._altura < 3.0; }
 }
 
+const calculaImc = (peso, altura) => peso / ( altura * altura);
+
+const isPesoValido = (peso) => peso > 0 && peso < 200;
+
+const isAlturaValida = (altura) => altura  > 0.0 && altura < 3.0;
 
 const getPaciente = (trPaciente) => {
     let tdNome = trPaciente.querySelector('.info-nome');

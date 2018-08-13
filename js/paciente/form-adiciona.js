@@ -42,7 +42,7 @@ const isPossuiErros = (paciente) => {
 
   var inputNome = document.querySelector("#nome");
   var msgErroNome = document.querySelector("#msgErroNome");
-  if(nome.length == 0) {
+  if(paciente.nome.length == 0) {
     inputNome.classList.add("campo-invalido");
     msgErroNome.textContent = ' campo obrigatório!';
     possuiErro = true;
@@ -53,7 +53,7 @@ const isPossuiErros = (paciente) => {
 
   var inputPeso = document.querySelector("#peso");
   var msgErroPeso = document.querySelector("#msgErroPeso");
-  if(!paciente.pesoValido) {
+  if(!isPesoValido(paciente.peso)) {
     inputPeso.classList.add("campo-invalido");
     msgErroPeso.textContent = ' deve ser > 0 e < 200';
     possuiErro = true;
@@ -64,7 +64,7 @@ const isPossuiErros = (paciente) => {
 
   var inputAltura = document.querySelector("#altura");
   var msgErroAltura = document.querySelector("#msgErroAltura");
-  if(!paciente.alturaValida) {
+  if(!isAlturaValida(paciente.altura)) {
     inputAltura.classList.add("campo-invalido");
     msgErroAltura.textContent = ' deve ser > 0 e < 3';
     possuiErro = true;

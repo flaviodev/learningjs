@@ -14,7 +14,7 @@ botaoAdicionar.addEventListener("click", function() {
         
             var resposta = xhr.responseText;
             var pacientes = JSON.parse(resposta);
-            pacientes.forEach((p) => adicionaPaciente(new Paciente(p.nome, p.peso, p.altura, p.gordura),tabela));
+            pacientes.forEach((paciente) => adicionaPaciente(paciente,tabela));
         } else {
             erroAjax.classList.remove("invisivel");
         }
