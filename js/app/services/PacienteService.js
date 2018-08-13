@@ -11,9 +11,7 @@ class PacienteService {
             
             this._http
                 .get('https://api-pacientes.herokuapp.com/pacientes')
-                .then(pacientes => {
-                    resolve(pacientes.map(objeto => new Paciente(objeto.nome, objeto.peso, objeto.altura, objeto.gordura)));
-                })
+                .then(pacientes => resolve(pacientes))
                 .catch(erro => {
                     console.log(erro);
                     reject('Não foi possível obter os pacientes');

@@ -1,11 +1,16 @@
 class Paciente {
 
-    constructor(nome, peso, altura, gordura) {
+    constructor(id, nome, peso, altura, gordura) {
+        this._id = id;
         this._nome = nome;
         this._peso = peso;
         this._altura = altura;
         this._gordura = gordura;
         Object.freeze(this);
+    }
+
+    get id() {
+        return this._id;
     }
 
     get nome() {

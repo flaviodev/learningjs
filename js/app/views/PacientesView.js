@@ -10,6 +10,7 @@ class PacientesView extends View {
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
+                        <th>id</th>
                         <th>Nome</th>
                         <th>Peso(kg)</th>
                         <th>Altura(m)</th>
@@ -21,12 +22,13 @@ class PacientesView extends View {
                 <tbody>
                     ${model.pacientes.map(p =>  `
                     <tr>
+                        <td>${p.id}</td>
                         <td>${p.nome}</td>
                         <td>${p.peso}</td>
                         <td>${p.altura}</td>
                         <td>${p.gordura}</td>
                         <td>${p.imc}</td>
-                        <td><button>Excluir</button></td>
+                        <td><button onclick="pacienteController.excluiPaciente('${p.id}')" class="btn btn-error text-center" type="button">Excluir</button></td>
                     </tr>`).join('')}
                 </tbody>
             </table>
