@@ -19,7 +19,7 @@
 				<div id="mensagemView"></div>
 				<h2>Meus pacientes</h2>
 				<label for="filtrar-tabela">Filtre:</label>
-				<input type="text" name="filtro" id="filtrar-tabela" placeholder="Digite o nome do paciente">				
+				<input type="text" name="filtro" id="campoFiltro" oninput="pacienteController.filtrarPacientesOnInput()" placeholder="Digite o nome do paciente">				
 
 				<div id="pacientesView"></div>
 

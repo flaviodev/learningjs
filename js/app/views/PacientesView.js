@@ -10,7 +10,6 @@ class PacientesView extends View {
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th>id</th>
                         <th>Nome</th>
                         <th>Peso(kg)</th>
                         <th>Altura(m)</th>
@@ -21,9 +20,8 @@ class PacientesView extends View {
                 </thead>
                 <tbody>
                     ${model.pacientes.map(p =>  `
-                    <tr>
-                        <td>${p.id}</td>
-                        <td>${p.nome}</td>
+                    <tr class="paciente">
+                        <td class="info-nome">${p.nome}</td>
                         <td>${p.peso}</td>
                         <td>${p.altura}</td>
                         <td>${p.gordura}</td>

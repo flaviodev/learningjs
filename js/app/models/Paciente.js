@@ -40,4 +40,34 @@ class Paciente {
     get alturaValida() {
         return this._altura  > 0.0 && this._altura < 3.0;
     }
+
+    valida() {
+        let mensagens = {};
+        let possuiErro = false;
+
+        if(this._nome.length == 0) {
+            mensagens.nome = ' campo obrigatório!';
+            possuiErro = true;
+        } 
+      
+        if(!this.pesoValido) {
+            mensagens.peso = ' deve ser > 0 e < 200';
+            possuiErro = true;
+        } 
+      
+        if(!this.alturaValida) {
+            mensagens.altura =  ' deve ser > 0 e < 3';
+            possuiErro = true;
+        }
+      
+        if(this._gordura <= 0) {
+            mensagens.gordura =  ' deve ser > 0';
+            possuiErro = true;
+        }
+      
+        if(!possuiErro)
+            mensagens = undefined;
+
+        return mensagens;
+      }
 }
