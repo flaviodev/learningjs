@@ -6,40 +6,36 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
 	</head>
 	<body>
 		<header>
-			<div class="container">
-				<h1 class="titulo">Aparecida Nutrição</h1>
-			</div>
+			<h1>Aparecida Nutrição</h1>
 		</header>
 		<main>
 			<section class="container">
+				<div id="mensagemView"></div>
 				<h2>Meus pacientes</h2>
 				<label for="filtrar-tabela">Filtre:</label>
-				<input type="text" name="filtro" id="filtrar-tabela" placeholder="Digite o nome do paciente">				
-				<table>
-					<thead>
-						<tr>
-							<th>Nome</th>
-							<th>Peso(kg)</th>
-							<th>Altura(m)</th>
-							<th>Gordura Corporal(%)</th>
-							<th>IMC</th>
-							<th>Ações</th>
-						</tr>
-					</thead>
-					<tbody id="tabela-pacientes">
-					</tbody>
-				</table>
-				<span id="erro-ajax" class="invisivel">Erro ao buscar os pacientes</span>
-				<button id="buscar-pacientes" class="botao bto-principal">Buscar Pacientes</button>
+				<input type="text" name="filtro" id="campoFiltro" oninput="pacienteController.filtrarPacientesOnInput()" placeholder="Digite o nome do paciente">				
+
+				<div id="pacientesView"></div>
+
+				<div class="text-center">
+					<button onclick="pacienteController.importaPacientes()" class="btn btn-primary text-center" type="button">
+						Importar Pacientes
+					</button>
+					<button onclick="pacienteController.apaga()" class="btn btn-primary text-center" type="button">
+						Apagar
+					</button>
+				</div> 
 			</section>
 
 			<section class="container">
 				<h2 id="titulo-form">Adicionar novo paciente</h2>
-				<form id="form-adiciona">
+				<form class="form" onsubmit="pacienteController.adiciona(event)">
 					<div class="grupo">
 						<label for="nome">Nome:* <span id="msgErroNome" class="mensagem-validacao"></span></label>
 						<input id="nome" name="nome" type="text" placeholder="digite o nome do seu paciente" class="campo">
@@ -57,16 +53,30 @@
 						<input id="gordura" type="text" placeholder="digite a porcentagem de gordura do seu paciente" class="campo campo-medio">
 					</div>
 			
-					<button id="adicionar-paciente" class="botao botao-principal">Adicionar</button>
+					<button id="adicionar-paciente" class="botao botao-principal" type="submit">Adicionar</button>
 				</form>
 			</section>
 
 		</main>
-		<script src="js/paciente/paciente.js"></script>
-		<script src="js/paciente/tabela.js"></script>
-		<script src="js/paciente/form-adiciona.js"></script>
-		<script src="js/paciente/filtro-tabela.js"></script>
-		<script src="js/paciente/dados-iniciais.js"></script>
-		<script src="js/paciente/busca-api.js"></script>
+		<script src="js/app/models/Paciente.js"></script>
+		<script src="js/app/models/ListaPacientes.js"></script>
+		<script src="js/app/models/Mensagem.js"></script>
+
+		<script src="js/app/views/View.js"></script>
+		<script src="js/app/views/PacientesView.js"></script>
+		<script src="js/app/views/MensagemView.js"></script>
+
+		<script src="js/app/helpers/Bind.js"></script>
+
+		<script src="js/app/services/ProxyFactory.js"></script>
+		<script src="js/app/services/HttpService.js"></script>
+		<script src="js/app/services/PacienteService.js"></script>
+
+		<script src="js/app/controllers/PacienteController.js"></script>
+
+		<script>
+			let pacienteController = new PacienteController();
+			pacienteController.iniciaListaPacientes();
+		</script>
 	</body>
 </html>
